@@ -40,7 +40,7 @@ jobs:
         id: version
         run: |
           versionCode=$(grep -oP 'versionCode\s+\K\d+' ./app/build.gradle)
-          echo "::set-output name=versionCode::$versionCode"
+          echo "versionCode=$version_code" >> $GITHUB_ENV
 
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
@@ -48,5 +48,5 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: app/build/outputs/apk/release/app-release-unsigned.apk
           asset_name: JustTrustMe.apk
-          tag: ${{ steps.version.outputs.versionCode }
+          tag: ${{ env.versionCode }
           overwrite: true
