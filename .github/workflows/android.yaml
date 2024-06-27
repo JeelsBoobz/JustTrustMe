@@ -48,5 +48,5 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: app/build/outputs/apk/release/app-release-unsigned.apk
           asset_name: JustTrustMe.apk
-          tag: ${{ env.versionCode }
+          tag: "${{env.versionCode}}"
           overwrite: true
